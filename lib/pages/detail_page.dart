@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_player/core/const.dart';
 import 'package:music_player/widgets/custom_button.dart';
+import 'package:music_player/widgets/custom_progress_widget.dart';
 
 class DetailPage extends StatefulWidget {
   @override
@@ -76,6 +77,8 @@ class _DetailPageState extends State<DetailPage> {
               fontSize: 16,
             ),
           ),
+          Expanded(child: SizedBox(),),
+          CustomProgressWidget(),
           Expanded(child: SizedBox(),),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 42),
