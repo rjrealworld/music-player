@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_player/core/const.dart';
+import 'package:music_player/widgets/custom_button.dart';
 
 class CustomProgressWidget extends StatefulWidget {
   @override
@@ -15,7 +16,41 @@ class _CustomProgressWidgetState extends State<CustomProgressWidget> {
       child: Stack(
         children: <Widget>[
           _mainProgress(width),
-      Container(
+          _progressValue(width),
+          _indicatorButton(width),
+        ],
+      ),
+    );
+  }
+
+  Widget _indicatorButton(double width) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+            height: 40,
+            width: width,
+            child: Row(
+              children: <Widget>[
+                Expanded(child: SizedBox()),
+                CustomButtonWidget(
+                  size: 30,
+                  onTap: null,
+                  child: Icon(
+                      Icons.fiber_manual_record,
+                      size: 20,
+                      color: AppColors.darkBlue,
+                  ),
+                ),
+              ],
+            ),
+          ),
+    );
+  }
+
+  Widget _progressValue(double width) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
         height: 5,
         width: width,
         decoration: BoxDecoration(
@@ -37,33 +72,34 @@ class _CustomProgressWidgetState extends State<CustomProgressWidget> {
           ],
         ),
       ),
-        ],
-      ),
     );
   }
 
   Widget _mainProgress(double width) {
-    return Container(
-          height: 5,
-          width: width,
-          decoration: BoxDecoration(
-            color: AppColors.mainColor,
-            border: Border.all(
-              color: AppColors.styleColor.withAlpha(90),
-              width: .5,
-            ),
-            borderRadius: BorderRadius.all(
-                Radius.circular(50),
-            ),
-            boxShadow: [
-              BoxShadow(
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+            height: 5,
+            width: width,
+            decoration: BoxDecoration(
+              color: AppColors.mainColor,
+              border: Border.all(
                 color: AppColors.styleColor.withAlpha(90),
-                spreadRadius: 1,
-                blurRadius: 1,
-                offset: Offset(1, -1),
+                width: .5,
               ),
-            ],
+              borderRadius: BorderRadius.all(
+                  Radius.circular(50),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.styleColor.withAlpha(90),
+                  spreadRadius: 1,
+                  blurRadius: 1,
+                  offset: Offset(1, -1),
+                ),
+              ],
+            ),
           ),
-        );
+    );
   }
 }
